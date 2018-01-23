@@ -1,0 +1,6 @@
+[wlc:vars]
+username=optiadmin
+password=Opt1adm1n
+
+[wlc]
+192.168.2.2

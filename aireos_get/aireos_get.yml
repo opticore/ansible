@@ -1,0 +1,27 @@
+---
+- name: Wireless Lan Controller Mac Tracker
+  hosts: wlc
+  connection: local
+  gather_facts: False
+
+  vars:
+    creds:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+
+  tasks:
+    - aireos_command:
+        provider: "{{ creds }}"
+        commands:
+          - show client summary
+          - show sysinfo
+      register: show_output
+
+    - debug:
+        msg: "{{ show_output }}"
+
+    - name: save output to ./output/
+      copy:
+        content: "{{ show_output.stdout[0] }}"
+        dest: "./output/show_output_{{ inventory_hostname }}.txt"
