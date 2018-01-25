@@ -1,0 +1,8 @@
+[devices]
+10.0.0.11
+10.0.0.12
+IOU3.test.com       #10.0.0.13    IOU3.test.com   entry in /etc/hosts
+
+[devices:vars]
+ansible_user=cisco
+ansible_pass=cisco

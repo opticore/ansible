@@ -1,0 +1,28 @@
+---
+- name: ANSIBLE PLAYBOOK TO RUN COMMAND AND WRITE OUTPUT
+  hosts: devices
+  connection: local
+  gather_facts: False
+
+  vars:
+    credentials:
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_pass }}"
+
+  tasks:
+    - name: RUN COMMAND ON IOS DEVICE
+      ios_command:
+        provider: "{{ credentials }}"
+        commands:
+          - show run
+      register: show_output
+
+
+    - name: SAVE OUTPUT TO ./_output/
+      copy:
+        content: "{{ show_output.stdout[0] }}"
+        dest: "./_output/{{ inventory_hostname }}.txt"
+
+#    - name: (OPTIONAL) DEBUG VARIABLES
+#      debug:
+#        msg: "{{ vars }}"

@@ -1,2 +1,4 @@
 ~Archive/
 ansible_lab
+.gitignore
+/aireos_get/hosts
