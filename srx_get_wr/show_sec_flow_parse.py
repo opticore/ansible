@@ -47,11 +47,9 @@ def load_file(filename,verbose=False):
     exit()
 
 def write_csv(input_list):
-  #print(input_list)
   with open ("output.csv",'w') as resultFile:
       wr = csv.writer(resultFile)
       for line in input_list:
-          #print(line)
           wr.writerow(line)
 
 if __name__ == '__main__':
